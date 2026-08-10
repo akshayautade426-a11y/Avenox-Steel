@@ -90,22 +90,18 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-4">
-              <li className="flex gap-3">
+                  <li className="flex gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <a href="mailto:info@avenoxsteel.com" className="text-gray-300 hover:text-primary transition-colors text-sm">
                   info@avenoxsteel.com
                 </a>
               </li>
               <li className="flex gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="tel:+1234567890" className="text-gray-300 hover:text-primary transition-colors text-sm">
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li className="flex gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-gray-300 text-sm">
-                  123 Steel Ave, Industrial City, ST 12345
+                  30 N Gould St Ste R
+                  <br />
+                  Sheridan, WY 82801, USA
                 </span>
               </li>
             </ul>

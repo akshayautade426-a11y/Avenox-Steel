@@ -89,10 +89,10 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground mb-1">Address</h4>
-                <p className="text-muted-foreground">
-                  123 Steel Avenue
+                <p className="text-muted-foreground max-w-sm">
+                  30 N Gould St Ste R
                   <br />
-                  Industrial City, ST 12345
+                  Sheridan, WY 82801, USA
                 </p>
               </div>
             </div>

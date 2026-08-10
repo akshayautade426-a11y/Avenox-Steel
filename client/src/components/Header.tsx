@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLocation } from 'wouter';
+import AnimatedLogo from './AnimatedLogo';
 
 interface HeaderProps {}
 
@@ -43,14 +44,10 @@ export default function Header({}: HeaderProps) {
       }`}
     >
       <div className="container flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-            <span className="text-white font-bold text-lg">A</span>
-          </div>
-          <div className="hidden sm:block">
-            <h1 className="text-lg font-bold text-foreground">AVENOX</h1>
-            <p className="text-xs text-muted-foreground">Steel Services</p>
+        {/* Logo (enlarged) */}
+        <div className="flex items-center gap-3">
+          <div style={{ width: 96 }}>
+            <AnimatedLogo size={96} />
           </div>
         </div>
 
@@ -62,7 +59,7 @@ export default function Header({}: HeaderProps) {
               href={item.href}
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick(item.href, item.hash);
+                handleNavClick(item.href);
               }}
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >

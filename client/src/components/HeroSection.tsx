@@ -21,28 +21,68 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background Image with Overlay */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)`,
-          backgroundAttachment: 'fixed',
-        }}
-      >
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: `repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(255, 255, 255, 0.1) 10px,
-            rgba(255, 255, 255, 0.1) 20px
-          )`
-        }}></div>
+      {/* Background Image with Luxury Steel Blueprint Animation */}
+      <div className="hero-luxury-background">
+        <svg
+          className="luxury-svg"
+          viewBox="0 0 1400 700"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern id="fineGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path
+                d="M 60 0 L 0 0 0 60"
+                fill="none"
+                stroke="rgba(255, 255, 255, 0.03)"
+                strokeWidth="1"
+              />
+              <path
+                d="M 30 0 L 0 0 0 30"
+                fill="none"
+                stroke="rgba(56, 189, 248, 0.03)"
+                strokeWidth="0.5"
+              />
+            </pattern>
+            <linearGradient id="steelMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#38bdf8" />
+              <stop offset="50%" stopColor="#818cf8" />
+              <stop offset="100%" stopColor="#f59e0b" />
+            </linearGradient>
+          </defs>
+
+          <rect width="100%" height="100%" fill="url(#fineGrid)" />
+
+          <g className="beam-structure" stroke="url(#steelMetallic)" strokeWidth="1.5" strokeLinecap="round">
+            <path className="beam-draw" d="M 200 600 L 200 150 L 1200 150 L 1200 600" />
+            <path className="beam-draw" style={{ animationDelay: '1s' }} d="M 200 150 L 700 380 L 1200 150" />
+            <path className="beam-draw" style={{ animationDelay: '2s' }} d="M 200 380 L 1200 380" />
+            <path
+              className="beam-draw"
+              style={{ animationDelay: '2.5s' }}
+              d="M 620 280 L 780 280 M 620 480 L 780 480 M 700 280 L 700 480"
+              strokeWidth="2.5"
+            />
+            <path
+              className="beam-draw"
+              style={{ animationDelay: '3s' }}
+              d="M 610 270 L 790 270 M 610 490 L 790 490"
+              strokeWidth="1"
+            />
+          </g>
+
+          <line className="laser-scan" x1="150" y1="380" x2="1250" y2="380" stroke="#38bdf8" strokeWidth="1" opacity="0.4" />
+
+          <circle cx="200" cy="150" className="glow-point" fill="#38bdf8" />
+          <circle cx="1200" cy="150" className="glow-point" fill="#38bdf8" />
+          <circle cx="700" cy="380" className="glow-point" fill="#f59e0b" style={{ animationDelay: '1s' }} />
+          <circle cx="200" cy="600" className="glow-point" fill="#38bdf8" />
+          <circle cx="1200" cy="600" className="glow-point" fill="#38bdf8" />
+        </svg>
       </div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
+      <div className="absolute inset-0 bg-black/45 z-10"></div>
 
       {/* Content */}
       <div className="relative z-20 container text-center text-white">
