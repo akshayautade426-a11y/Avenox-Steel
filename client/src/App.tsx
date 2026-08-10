@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import About from "@/pages/About";
@@ -38,6 +39,16 @@ function App() {
     const timeout = window.setTimeout(() => setIsReady(true), 650);
     return () => window.clearTimeout(timeout);
   }, []);
+
+  // Scroll to top when the route changes
+  const [location] = useLocation();
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    } catch (e) {
+      /* noop for SSR */
+    }
+  }, [location]);
 
   return (
     <ErrorBoundary>

@@ -33,6 +33,11 @@ export default function Header({}: HeaderProps) {
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     setLocation(href);
+    try {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    } catch (e) {
+      /* ignore in non-browser env */
+    }
   };
 
   return (
