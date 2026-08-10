@@ -51,8 +51,8 @@ export default function Header({}: HeaderProps) {
       <div className="container flex items-center justify-between">
         {/* Logo (enlarged) */}
         <div className="flex items-center gap-3">
-          <div style={{ width: 96 }}>
-            <AnimatedLogo size={96} />
+          <div style={{ width: 120 }}>
+            <AnimatedLogo size={120} />
           </div>
         </div>
 

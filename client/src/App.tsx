@@ -63,7 +63,7 @@ function App() {
                   <div className="absolute inset-4 rounded-full border border-primary/30 opacity-70 animate-logo-glow"></div>
                   <div className="absolute inset-8 rounded-full bg-primary/10"></div>
                   <div className="relative">
-                    <AnimatedLogo size={96} />
+                    <AnimatedLogo size={128} />
                   </div>
                 </div>
                 <div className="space-y-2">
