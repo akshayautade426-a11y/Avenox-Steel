@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main>
+      <main className="pt-32">
         <ProjectsSection />
       </main>
       <Footer />
