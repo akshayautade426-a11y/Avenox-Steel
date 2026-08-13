@@ -82,9 +82,16 @@ export default function Header({}: HeaderProps) {
       <div className="container flex items-center justify-between">
         {/* Logo (transparent / updated asset) */}
         <div className="flex items-center gap-3">
-          <div style={{ width: 210 }}>
-            <AnimatedLogo size={210} animated={false} suppressAAnimation={true} />
-          </div>
+          <button
+            type="button"
+            onClick={() => handleNavClick('/')}
+            className="flex items-center justify-center cursor-pointer bg-transparent border-0 p-0"
+            aria-label="Go to homepage"
+          >
+            <div style={{ width: 210 }}>
+              <AnimatedLogo size={210} animated={false} suppressAAnimation={true} />
+            </div>
+          </button>
         </div>
 
         {/* Desktop Navigation */}
