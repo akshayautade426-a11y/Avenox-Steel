@@ -66,6 +66,10 @@ export default function ContactSection() {
                 <a href="mailto:info@avenoxsteel.com" className="text-muted-foreground hover:text-primary transition-colors">
                   info@avenoxsteel.com
                 </a>
+                <br />
+                <a href="mailto:estimating@avenoxsteel.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  estimating@avenoxsteel.com
+                </a>
               </div>
             </div>
 
@@ -76,8 +80,8 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+13072041263" className="text-muted-foreground hover:text-primary transition-colors">
+                  +1 307 2041 263
                 </a>
               </div>
             </div>
@@ -92,7 +96,7 @@ export default function ContactSection() {
                 <p className="text-muted-foreground max-w-sm">
                   30 N Gould St Ste R
                   <br />
-                  Sheridan, WY 82801, USA
+                  Sheridan, WY 82801,  United States
                 </p>
               </div>
             </div>
@@ -107,9 +111,7 @@ export default function ContactSection() {
                 <p className="text-muted-foreground text-sm">
                   Monday - Friday: 8:00 AM - 6:00 PM
                   <br />
-                  Saturday: 9:00 AM - 2:00 PM
-                  <br />
-                  Sunday: Closed
+                  Sunday & Saturday : Closed
                 </p>
               </div>
             </div>
@@ -173,7 +175,7 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+1 (234) 567-890"
+                    placeholder="+1 307 2041 263"
                     className="w-full"
                   />
                 </div>

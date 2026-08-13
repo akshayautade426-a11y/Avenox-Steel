@@ -73,20 +73,13 @@ export default function WhyAvenoxSection() {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 bg-white rounded-lg p-12 shadow-sm border border-gray-100">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <p className="text-muted-foreground">Projects Completed</p>
+        <div className="mt-16">
+          <div className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-white to-primary/10 p-8 text-center shadow-sm md:p-10">
+            <div className="mb-4 inline-flex items-center rounded-full border border-primary/20 bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+              Quality Note
             </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">99.8%</div>
-              <p className="text-muted-foreground">Quality Accuracy Rate</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">15+</div>
-              <p className="text-muted-foreground">Years of Experience</p>
-            </div>
+            <div className="text-5xl font-black tracking-tight text-primary md:text-7xl">99.8%</div>
+            <p className="mt-3 text-base font-medium text-muted-foreground md:text-lg">Quality Accuracy Rate</p>
           </div>
         </div>
       </div>

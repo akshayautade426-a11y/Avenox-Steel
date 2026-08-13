@@ -10,14 +10,13 @@ export default function Footer() {
       <div className="container py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-4 mb-4">
-              <div style={{ width: 48 }}>
-                <AnimatedLogo size={48} />
+          <div className="flex flex-col items-start md:items-center lg:items-start">
+            <div className="mb-4 flex flex-col items-center justify-center text-center">
+              <div style={{ width: 260, maxWidth: '100%' }}>
+                <AnimatedLogo size={260} animated={false} suppressAAnimation={true} />
               </div>
-              <h3 className="text-lg font-bold">AVENOX STEEL</h3>
             </div>
-            <p className="text-gray-300 text-sm mb-6">
+            <p className="text-gray-300 text-sm mb-6 text-left md:text-center lg:text-left">
               Precision-driven steel detailing and engineering solutions for complex structural projects.
             </p>
             <div className="flex gap-4">
@@ -91,10 +90,21 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-4">
-                  <li className="flex gap-3">
+              <li className="flex gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="mailto:info@avenoxsteel.com" className="text-gray-300 hover:text-primary transition-colors text-sm">
-                  info@avenoxsteel.com
+                <div className="space-y-1">
+                  <a href="mailto:info@avenoxsteel.com" className="text-gray-300 hover:text-primary transition-colors text-sm block">
+                    info@avenoxsteel.com
+                  </a>
+                  <a href="mailto:estimating@avenoxsteel.com" className="text-gray-300 hover:text-primary transition-colors text-sm block">
+                    estimating@avenoxsteel.com
+                  </a>
+                </div>
+              </li>
+              <li className="flex gap-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <a href="tel:+13072041263" className="text-gray-300 hover:text-primary transition-colors text-sm">
+                  +1 307 2041 263
                 </a>
               </li>
               <li className="flex gap-3">
@@ -102,7 +112,7 @@ export default function Footer() {
                 <span className="text-gray-300 text-sm">
                   30 N Gould St Ste R
                   <br />
-                  Sheridan, WY 82801, USA
+                  Sheridan, WY 82801,  United States
                 </span>
               </li>
             </ul>

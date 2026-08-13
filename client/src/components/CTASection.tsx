@@ -1,6 +1,28 @@
 import { Button } from '@/components/ui/button';
 
 export default function CTASection() {
+  const handleRequestQuote = () => {
+    const subject = encodeURIComponent('Request for Steel Detailing / Estimating Quote');
+    const body = encodeURIComponent(
+      'Hello Avenox Steel Team,\n\n' +
+        'I would like to request a quote for a steel detailing / estimating project.\n\n' +
+        'Project Details:\n' +
+        '- Project / Scope:\n' +
+        '- Location:\n' +
+        '- Timeline:\n' +
+        '- Estimated Quantity / Material Requirements:\n' +
+        '- Any other notes:\n\n' +
+        'Please share pricing, scope, and the next steps.\n\n' +
+        'Best regards,\n' +
+        '[Your Name]\n' +
+        '[Company Name]\n' +
+        '[Phone Number]\n' +
+        '[Email Address]'
+    );
+
+    window.location.href = `mailto:estimating@avenoxsteel.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section className="section-spacing bg-gradient-to-r from-primary to-primary/80 text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -31,6 +53,7 @@ export default function CTASection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
+            onClick={handleRequestQuote}
             className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
           >
             Request a Quote

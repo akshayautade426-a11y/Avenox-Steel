@@ -16,70 +16,43 @@ export default function HeroSection() {
     }
   };
 
+  const handleRequestQuote = () => {
+    const subject = encodeURIComponent('Request for Steel Detailing / Estimating Quote');
+    const body = encodeURIComponent(
+      'Hello Avenox Steel Team,\n\n' +
+        'I would like to request a quote for a steel detailing / estimating project.\n\n' +
+        'Project Details:\n' +
+        '- Project / Scope:\n' +
+        '- Location:\n' +
+        '- Timeline:\n' +
+        '- Estimated Quantity / Material Requirements:\n' +
+        '- Any other notes:\n\n' +
+        'Please share pricing, scope, and the next steps.\n\n' +
+        'Best regards,\n' +
+        '[Your Name]\n' +
+        '[Company Name]\n' +
+        '[Phone Number]\n' +
+        '[Email Address]'
+    );
+
+    window.location.href = `mailto:estimating@avenoxsteel.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background Image with Luxury Steel Blueprint Animation */}
-      <div className="hero-luxury-background">
-        <svg
-          className="luxury-svg"
-          viewBox="0 0 1400 700"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern id="fineGrid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path
-                d="M 60 0 L 0 0 0 60"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.03)"
-                strokeWidth="1"
-              />
-              <path
-                d="M 30 0 L 0 0 0 30"
-                fill="none"
-                stroke="rgba(56, 189, 248, 0.03)"
-                strokeWidth="0.5"
-              />
-            </pattern>
-            <linearGradient id="steelMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="50%" stopColor="#818cf8" />
-              <stop offset="100%" stopColor="#f59e0b" />
-            </linearGradient>
-          </defs>
-
-          <rect width="100%" height="100%" fill="url(#fineGrid)" />
-
-          <g className="beam-structure" stroke="url(#steelMetallic)" strokeWidth="1.5" strokeLinecap="round">
-            <path className="beam-draw" d="M 200 600 L 200 150 L 1200 150 L 1200 600" />
-            <path className="beam-draw" style={{ animationDelay: '1s' }} d="M 200 150 L 700 380 L 1200 150" />
-            <path className="beam-draw" style={{ animationDelay: '2s' }} d="M 200 380 L 1200 380" />
-            <path
-              className="beam-draw"
-              style={{ animationDelay: '2.5s' }}
-              d="M 620 280 L 780 280 M 620 480 L 780 480 M 700 280 L 700 480"
-              strokeWidth="2.5"
-            />
-            <path
-              className="beam-draw"
-              style={{ animationDelay: '3s' }}
-              d="M 610 270 L 790 270 M 610 490 L 790 490"
-              strokeWidth="1"
-            />
-          </g>
-
-          <line className="laser-scan" x1="150" y1="380" x2="1250" y2="380" stroke="#38bdf8" strokeWidth="1" opacity="0.4" />
-
-          <circle cx="200" cy="150" className="glow-point" fill="#38bdf8" />
-          <circle cx="1200" cy="150" className="glow-point" fill="#38bdf8" />
-          <circle cx="700" cy="380" className="glow-point" fill="#f59e0b" style={{ animationDelay: '1s' }} />
-          <circle cx="200" cy="600" className="glow-point" fill="#38bdf8" />
-          <circle cx="1200" cy="600" className="glow-point" fill="#38bdf8" />
-        </svg>
-      </div>
+      {/* Structural Engineering Hero Background */}
+      <div
+        className="hero-luxury-background"
+        style={{
+          backgroundImage: "url('/home-page-strucural-engineering.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/45 z-10"></div>
@@ -92,34 +65,33 @@ export default function HeroSection() {
           }`}
         >
           {/* Accent Line */}
-          <div className="flex justify-center mb-6">
-            <div className="h-1 w-12 bg-primary rounded-full"></div>
+          <div className="flex justify-center mb-8">
+            <div className="h-1 w-16 rounded-full bg-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.9)]"></div>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Engineering Steel.
-            <br />
-            <span className="text-primary">Building Strength.</span>
+          <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-black mb-6 leading-[0.68] tracking-[-0.08em]">
+            <span className="block text-white drop-shadow-[0_4px_12px_rgba(255,255,255,0.16)] leading-[0.8]">Engineering Steel.</span>
+            <span className="mt-5 block text-cyan-400 drop-shadow-[0_0_22px_rgba(34,211,238,0.5)] leading-[0.8]">Building Strength.</span>
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-[2rem] text-slate-100/95 mb-10 max-w-5xl mx-auto font-medium leading-[1.15] tracking-[-0.03em]">
             Precision-driven steel detailing and engineering solutions for complex structural projects.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-12">
             <Button
               onClick={() => scrollToSection('services')}
-              className="bg-primary text-white hover:bg-primary/90 px-8 py-3 text-lg"
+              className="bg-sky-500 text-slate-950 hover:bg-sky-400 px-8 py-3.5 text-lg font-bold shadow-[0_0_25px_rgba(14,165,233,0.45)]"
             >
               Explore Our Services
             </Button>
             <Button
-              onClick={() => scrollToSection('contact')}
+              onClick={handleRequestQuote}
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg"
+              className="border-2 border-sky-300 text-sky-100 hover:bg-sky-400/10 px-8 py-3.5 text-lg font-bold shadow-[0_0_18px_rgba(56,189,248,0.25)]"
             >
               Request a Quote
             </Button>

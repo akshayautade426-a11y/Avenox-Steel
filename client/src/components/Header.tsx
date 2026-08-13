@@ -20,6 +20,28 @@ export default function Header({}: HeaderProps) {
 
   const [, setLocation] = useLocation();
 
+  const handleRequestQuote = () => {
+    const subject = encodeURIComponent('Request for Steel Detailing / Estimating Quote');
+    const body = encodeURIComponent(
+      'Hello Avenox Steel Team,\n\n' +
+        'I would like to request a quote for a steel detailing / estimating project.\n\n' +
+        'Project Details:\n' +
+        '- Project / Scope:\n' +
+        '- Location:\n' +
+        '- Timeline:\n' +
+        '- Estimated Quantity / Material Requirements:\n' +
+        '- Any other notes:\n\n' +
+        'Please share pricing, scope, and the next steps.\n\n' +
+        'Best regards,\n' +
+        '[Your Name]\n' +
+        '[Company Name]\n' +
+        '[Phone Number]\n' +
+        '[Email Address]'
+    );
+
+    window.location.href = `mailto:estimating@avenoxsteel.com?subject=${subject}&body=${body}`;
+  };
+
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
@@ -30,11 +52,20 @@ export default function Header({}: HeaderProps) {
     { label: 'Contact', href: '/contact' },
   ];
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (href: string, hash?: string) => {
     setIsMobileMenuOpen(false);
     setLocation(href);
     try {
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      if (hash) {
+        setTimeout(() => {
+          const target = document.getElementById(hash.replace('#', ''));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
     } catch (e) {
       /* ignore in non-browser env */
     }
@@ -49,10 +80,10 @@ export default function Header({}: HeaderProps) {
       }`}
     >
       <div className="container flex items-center justify-between">
-        {/* Logo (enlarged) */}
+        {/* Logo (transparent / updated asset) */}
         <div className="flex items-center gap-3">
-          <div style={{ width: 120 }}>
-            <AnimatedLogo size={120} />
+          <div style={{ width: 210 }}>
+            <AnimatedLogo size={210} animated={false} suppressAAnimation={true} />
           </div>
         </div>
 
@@ -75,7 +106,7 @@ export default function Header({}: HeaderProps) {
 
         {/* CTA Button */}
         <div className="hidden sm:block">
-          <Button className="bg-primary text-white hover:bg-primary/90">
+          <Button onClick={handleRequestQuote} className="bg-primary text-white hover:bg-primary/90">
             Request a Quote
           </Button>
         </div>
@@ -104,14 +135,14 @@ export default function Header({}: HeaderProps) {
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick(item.href, item.hash);
+                  handleNavClick(item.href);
                 }}
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
               >
                 {item.label}
               </a>
             ))}
-            <Button className="w-full bg-primary text-white hover:bg-primary/90 mt-2">
+            <Button onClick={handleRequestQuote} className="w-full bg-primary text-white hover:bg-primary/90 mt-2">
               Request a Quote
             </Button>
           </nav>

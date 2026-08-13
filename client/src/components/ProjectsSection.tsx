@@ -21,38 +21,6 @@ export default function ProjectsSection() {
       scope: 'Complete steel detailing and BIM coordination',
       category: 'industrial',
     },
-    {
-      id: 3,
-      name: 'Regional Distribution Center',
-      type: 'Warehouse',
-      location: 'Chicago, IL',
-      scope: 'Steel frame design and fabrication drawings',
-      category: 'industrial',
-    },
-    {
-      id: 4,
-      name: 'Medical Research Building',
-      type: 'Structural',
-      location: 'Boston, MA',
-      scope: 'Complex structural steel coordination',
-      category: 'structural',
-    },
-    {
-      id: 5,
-      name: 'Mixed-Use Development',
-      type: 'Commercial',
-      location: 'Los Angeles, CA',
-      scope: 'Multi-phase steel detailing project',
-      category: 'commercial',
-    },
-    {
-      id: 6,
-      name: 'Bridge Infrastructure Project',
-      type: 'Structural',
-      location: 'Seattle, WA',
-      scope: 'Steel bridge detailing and connection design',
-      category: 'structural',
-    },
   ];
 
   const filters = ['all', 'commercial', 'industrial', 'structural'];

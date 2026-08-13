@@ -24,13 +24,13 @@ export default function ServicesSection() {
     },
     {
       icon: Network,
-      title: 'Connection Detailing',
+      title: 'Connection Design',
       description: 'Detailed structural steel connection design and detailing for practical fabrication and erection.',
     },
     {
       icon: Calculator,
       title: 'BIM Coordination',
-      description: '3D coordination to identify clashes and improve communication between project disciplines.',
+      description: '3D Coordination involves comprehensive 3D collaboration to identify potential clashes and enhance communication among project disciplines. This process ensures seamless integration of architectural, structural, and MEP systems, reducing conflicts and improving overall project efficiency.',
     },
   ];
 
