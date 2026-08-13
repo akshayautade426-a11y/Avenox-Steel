@@ -3,16 +3,30 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
+type FormState = {
+  fullName: string;
+  company: string;
+  email: string;
+  phone: string;
+  projectType: string;
+  scope: string;
+  message: string;
+};
+
+const initialForm: FormState = {
+  fullName: '',
+  company: '',
+  email: '',
+  phone: '',
+  projectType: '',
+  scope: '',
+  message: '',
+};
+
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    company: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    scope: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState<FormState>(initialForm);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -20,21 +34,76 @@ export default function ContactSection() {
       ...prev,
       [name]: value,
     }));
+    if (status) {
+      setStatus(null);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
-    setFormData({
-      fullName: '',
-      company: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      scope: '',
-      message: '',
-    });
+
+    if (isSubmitting) {
+      return;
+    }
+
+    const trimmed = {
+      ...formData,
+      fullName: formData.fullName.trim(),
+      company: formData.company.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      projectType: formData.projectType.trim(),
+      scope: formData.scope.trim(),
+      message: formData.message.trim(),
+    };
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!trimmed.fullName || !trimmed.email || !trimmed.phone || !trimmed.projectType || !trimmed.message) {
+      setStatus({
+        type: 'error',
+        message: 'Please complete all required fields before submitting.',
+      });
+      return;
+    }
+
+    if (!emailPattern.test(trimmed.email)) {
+      setStatus({
+        type: 'error',
+        message: 'Please enter a valid email address.',
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch('/api/send-enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(trimmed),
+      });
+
+      const payload = (await response.json()) as { success?: boolean; error?: string; message?: string };
+
+      if (!response.ok || payload.success === false) {
+        throw new Error(payload.error || 'Unable to send your enquiry right now.');
+      }
+
+      setStatus({
+        type: 'success',
+        message: payload.message || 'Thank you for your inquiry! We will contact you soon.',
+      });
+      setFormData(initialForm);
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Something went wrong while sending your enquiry.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -137,7 +206,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Company Name *
+                    Company Name
                   </label>
                   <Input
                     type="text"
@@ -145,7 +214,6 @@ export default function ContactSection() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Your Company"
-                    required
                     className="w-full"
                   />
                 </div>
@@ -168,7 +236,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">
-                    Phone
+                    Phone *
                   </label>
                   <Input
                     type="tel"
@@ -176,6 +244,7 @@ export default function ContactSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+1 307 2041 263"
+                    required
                     className="w-full"
                   />
                 </div>
@@ -232,14 +301,28 @@ export default function ContactSection() {
                   required
                   rows={5 as any}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                ></textarea>
+                />
               </div>
+
+              {status && (
+                <div
+                  className={`mb-6 rounded-md border px-4 py-3 text-sm ${
+                    status.type === 'success'
+                      ? 'border-green-200 bg-green-50 text-green-700'
+                      : 'border-red-200 bg-red-50 text-red-700'
+                  }`}
+                  aria-live="polite"
+                >
+                  {status.message}
+                </div>
+              )}
 
               <Button
                 type="submit"
-                className="w-full bg-primary text-white hover:bg-primary/90 py-3 text-lg font-semibold"
+                disabled={isSubmitting}
+                className="w-full bg-primary text-white hover:bg-primary/90 py-3 text-lg font-semibold disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Submit Project Inquiry
+                {isSubmitting ? 'Sending...' : 'Submit Project Inquiry'}
               </Button>
             </form>
           </div>
