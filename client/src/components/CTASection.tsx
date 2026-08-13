@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'wouter';
 
 export default function CTASection() {
+  const [, setLocation] = useLocation();
+
   const handleRequestQuote = () => {
     const subject = encodeURIComponent('Request for Steel Detailing / Estimating Quote');
     const body = encodeURIComponent(
@@ -21,6 +24,11 @@ export default function CTASection() {
     );
 
     window.location.href = `mailto:estimating@avenoxsteel.com?subject=${subject}&body=${body}`;
+  };
+
+  const handleContactUs = () => {
+    setLocation('/contact');
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
   return (
@@ -60,6 +68,7 @@ export default function CTASection() {
           </Button>
           <Button
             variant="outline"
+            onClick={handleContactUs}
             className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold"
           >
             Contact Us
