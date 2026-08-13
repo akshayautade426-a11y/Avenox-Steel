@@ -108,8 +108,8 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // Prepare the form data for Web3Forms
-    const formData = new FormData();
+    // Prepare the form data for Web3Forms using URLSearchParams (Node.js compatible)
+    const formData = new URLSearchParams();
     formData.append('access_key', accessKey);
     formData.append('subject', 'New Enquiry - Avenox Steel Services LLC');
     formData.append('from_name', validation.data.fullName);
@@ -127,13 +127,29 @@ export default async function handler(req: any, res: any) {
     // Submit to Web3Forms API
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString(),
     });
 
-    const result = await response.json();
+    const responseText = await response.text();
+    let result: any = {};
+
+    try {
+      result = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error('Web3Forms response is not JSON:', responseText);
+      // If Web3Forms returns non-JSON, still consider it successful if status is ok
+      if (response.ok) {
+        result = { success: true };
+      } else {
+        throw new Error(`Invalid response from Web3Forms: ${responseText}`);
+      }
+    }
 
     if (!response.ok || result.success === false) {
-      throw new Error(result.message || 'Failed to submit enquiry to Web3Forms.');
+      throw new Error(result.message || result.error || 'Failed to submit enquiry to Web3Forms.');
     }
 
     return res.status(200).json({
