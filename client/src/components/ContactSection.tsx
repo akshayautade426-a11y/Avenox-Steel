@@ -79,21 +79,42 @@ export default function ContactSection() {
     setStatus(null);
 
     try {
-      const response = await fetch('/api/send-enquiry', {
+      // Get the access key from environment variables
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      
+      if (!accessKey) {
+        throw new Error('Web3Forms access key is not configured.');
+      }
+
+      // Prepare form data for Web3Forms
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append('access_key', accessKey);
+      formDataToSubmit.append('subject', 'New Enquiry - Avenox Steel Services LLC');
+      formDataToSubmit.append('from_name', trimmed.fullName);
+      formDataToSubmit.append('email', trimmed.email);
+      formDataToSubmit.append('phone', trimmed.phone);
+      formDataToSubmit.append('company', trimmed.company || 'Not provided');
+      formDataToSubmit.append('service', trimmed.projectType);
+      formDataToSubmit.append('scope', trimmed.scope || 'Not provided');
+      formDataToSubmit.append('message', trimmed.message);
+      formDataToSubmit.append('botcheck', ''); // Honeypot field for spam protection
+      formDataToSubmit.append('redirect', 'false');
+
+      // Submit directly to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(trimmed),
+        body: formDataToSubmit,
       });
 
-      const payload = (await response.json()) as { success?: boolean; error?: string; message?: string };
+      const result = await response.json();
 
-      if (!response.ok || payload.success === false) {
-        throw new Error(payload.error || 'Unable to send your enquiry right now.');
+      if (!response.ok || result.success === false) {
+        throw new Error(result.message || 'Failed to send enquiry. Please try again.');
       }
 
       setStatus({
         type: 'success',
-        message: payload.message || 'Thank you for your inquiry! We will contact you soon.',
+        message: 'Your enquiry has been sent successfully. We will get back to you soon.',
       });
       setFormData(initialForm);
     } catch (error) {
