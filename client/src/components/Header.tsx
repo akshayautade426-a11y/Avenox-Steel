@@ -104,7 +104,7 @@ export default function Header({}: HeaderProps) {
                 e.preventDefault();
                 handleNavClick(item.href);
               }}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-base font-medium text-foreground hover:text-primary transition-colors"
             >
               {item.label}
             </a>
@@ -144,7 +144,7 @@ export default function Header({}: HeaderProps) {
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+                className="text-base font-medium text-foreground hover:text-primary transition-colors py-2"
               >
                 {item.label}
               </a>

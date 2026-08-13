@@ -57,18 +57,19 @@ export default function QualitySection() {
             </div>
           </div>
 
-          {/* Right: Image Placeholder */}
+          {/* Right: Image */}
           <div className="relative">
-            <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg overflow-hidden shadow-2xl">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">📐</div>
-                  <p className="text-gray-400 font-semibold">Precision Engineering</p>
-                </div>
-              </div>
+            <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="/9.jpg" 
+                alt="Precision Engineering" 
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Accent decoration */}
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary/10 rounded-lg -z-10"></div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-lg -z-10"></div>
+            {/* Inner border accent */}
+            <div className="absolute inset-0 rounded-2xl border-2 border-primary/20 pointer-events-none"></div>
           </div>
         </div>
       </div>
