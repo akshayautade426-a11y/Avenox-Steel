@@ -14,7 +14,7 @@ export default function AnimatedLogo({
   return (
     <div className="avenox-logo-wrapper" style={{ width, maxWidth: "100%" }}>
       <img
-        src="/Logo-.png"
+        src="/Logo-2.png"
         alt="Avenox Steel Services LLC logo"
         style={{
           display: 'block',
@@ -24,6 +24,8 @@ export default function AnimatedLogo({
           objectFit: 'contain',
           filter: 'none',
           background: 'transparent',
+          transform: 'scale(1.3)',
+          transition: 'transform 0.3s ease',
         }}
       />
       <style>{`

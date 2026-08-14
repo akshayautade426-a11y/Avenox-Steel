@@ -46,7 +46,6 @@ export default function Header({}: HeaderProps) {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Projects', href: '/projects' },
     { label: 'Industries', href: '/industries' },
     { label: 'Why Avenox', href: '/why-avenox' },
     { label: 'Contact', href: '/contact' },

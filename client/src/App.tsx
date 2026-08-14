@@ -7,7 +7,6 @@ import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
 import Industries from "@/pages/Industries";
 import NotFound from "@/pages/NotFound";
-import Projects from "@/pages/Projects";
 import Services from "@/pages/Services";
 import WhyAvenox from "@/pages/WhyAvenox";
 import { Route, Switch } from "wouter";
@@ -21,7 +20,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/services" component={Services} />
-      <Route path="/projects" component={Projects} />
       <Route path="/industries" component={Industries} />
       <Route path="/why-avenox" component={WhyAvenox} />
       <Route path="/contact" component={Contact} />

@@ -3,7 +3,6 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ServicesSection from '@/components/ServicesSection';
 import ProcessSection from '@/components/ProcessSection';
-import ProjectsSection from '@/components/ProjectsSection';
 import IndustriesSection from '@/components/IndustriesSection';
 import WhyAvenoxSection from '@/components/WhyAvenoxSection';
 import QualitySection from '@/components/QualitySection';
@@ -29,7 +28,6 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <ProcessSection />
-        <ProjectsSection />
         <IndustriesSection />
         <WhyAvenoxSection />
         <QualitySection />
