@@ -264,7 +264,7 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+1 307 2041 263"
+                    placeholder="+1 307 204 1263"
                     required
                     className="w-full"
                   />
