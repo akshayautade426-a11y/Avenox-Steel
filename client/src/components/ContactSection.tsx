@@ -171,7 +171,7 @@ export default function ContactSection() {
               <div>
                 <h4 className="font-semibold text-foreground mb-1">Phone</h4>
                 <a href="tel:+13072041263" className="text-muted-foreground hover:text-primary transition-colors">
-                  +1 307 2041 263
+                  +1 307 204 1263
                 </a>
               </div>
             </div>

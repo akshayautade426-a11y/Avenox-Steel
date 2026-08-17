@@ -6,7 +6,7 @@ describe('validateEnquiry', () => {
     const result = validateEnquiry({
       fullName: 'Jane Doe',
       email: 'jane@example.com',
-      phone: '+1 307 2041 263',
+      phone: '+1 307 204 1263',
       company: 'Avenox Steel',
       projectType: 'industrial',
       message: 'Need a quote for structural steel detailing.',
